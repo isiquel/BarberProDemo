@@ -9,8 +9,8 @@
 <style>
 :root{
   --bg:#050505;
-  --soft:#080808;
   --card:#111;
+  --soft:#080808;
   --text:#f8f2e6;
   --muted:#c8bfae;
   --gold:#c99524;
@@ -23,6 +23,7 @@
   --radius:26px;
 }
 *{box-sizing:border-box}
+html{scroll-behavior:smooth}
 body{
   margin:0;
   font-family:Arial,Helvetica,sans-serif;
@@ -34,6 +35,7 @@ body{
     #050505;
 }
 button,input,select,textarea{font-family:inherit}
+button{border:none;outline:none}
 .app{max-width:1180px;margin:0 auto;padding:16px}
 .hidden{display:none!important}
 .hero{
@@ -58,24 +60,13 @@ button,input,select,textarea{font-family:inherit}
   border-radius:28px;
   pointer-events:none;
 }
-.hero::after{
-  content:"";
-  position:absolute;
-  width:360px;
-  height:360px;
-  border-radius:50%;
-  right:34px;
-  top:10px;
-  opacity:.85;
-  background:radial-gradient(circle,rgba(244,208,111,.25),rgba(244,208,111,.06) 45%,transparent 70%);
-}
 .brand{
   display:flex;
   gap:14px;
   align-items:flex-start;
   position:relative;
   z-index:2;
-  max-width:560px;
+  max-width:600px;
 }
 .logo{
   width:62px;
@@ -98,7 +89,6 @@ button,input,select,textarea{font-family:inherit}
   line-height:.98;
   letter-spacing:-1.2px;
   color:#fff;
-  text-shadow:0 4px 22px rgba(0,0,0,.55);
 }
 .brand h1::after{
   content:"Sistema de Agendamento Online";
@@ -112,7 +102,7 @@ button,input,select,textarea{font-family:inherit}
 }
 .brand p{
   margin:18px 0 0;
-  max-width:500px;
+  max-width:520px;
   font-size:15px;
   color:#e9deca;
   line-height:1.5;
@@ -131,63 +121,6 @@ button,input,select,textarea{font-family:inherit}
   gap:7px;
   font-size:14px;
   font-weight:700;
-}
-.phone-preview{
-  position:absolute;
-  right:58px;
-  top:50px;
-  width:315px;
-  height:535px;
-  border-radius:44px;
-  padding:16px;
-  z-index:3;
-  background:linear-gradient(145deg,#1b1b1b,#050505);
-  border:1px solid rgba(255,255,255,.18);
-  box-shadow:0 35px 80px rgba(0,0,0,.75),-20px 20px 75px rgba(201,149,36,.12);
-  transform:rotate(2.5deg);
-}
-.phone-screen{
-  height:100%;
-  border-radius:32px;
-  overflow:hidden;
-  background:radial-gradient(circle at 50% 0,rgba(244,208,111,.14),transparent 30%),#080808;
-  border:1px solid rgba(244,208,111,.16);
-  padding:36px 18px 18px;
-}
-.phone-title{text-align:center;color:#fff;font-weight:900;margin-bottom:4px}
-.phone-subtitle{text-align:center;color:var(--gold2);font-size:12px;margin-bottom:18px}
-.phone-mini-label{font-size:12px;color:#d8cfbe;margin:10px 0 7px;font-weight:800}
-.phone-option{
-  border:1px solid rgba(244,208,111,.30);
-  background:rgba(255,255,255,.035);
-  border-radius:13px;
-  padding:10px 12px;
-  margin-bottom:8px;
-  display:flex;
-  justify-content:space-between;
-  gap:8px;
-  color:#fff;
-  font-size:13px;
-}
-.phone-time-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:8px}
-.phone-time{
-  border:1px solid rgba(255,255,255,.14);
-  border-radius:11px;
-  padding:9px 4px;
-  text-align:center;
-  font-size:12px;
-  color:#fff;
-  background:#111;
-}
-.phone-time.active{background:linear-gradient(135deg,var(--gold2),var(--gold));color:#15100a;font-weight:900}
-.phone-cta{
-  margin-top:12px;
-  border-radius:13px;
-  padding:12px;
-  text-align:center;
-  background:linear-gradient(135deg,var(--gold2),var(--gold));
-  color:#15100a;
-  font-weight:900;
 }
 .card{
   border:1px solid rgba(244,208,111,.18);
@@ -268,10 +201,16 @@ button:hover,.btn:hover{transform:translateY(-1px);opacity:.94}
 .confirm-box{background:rgba(212,160,52,.10);border-color:rgba(212,160,52,.24)}
 .step-head{display:flex;align-items:center;gap:9px;margin-bottom:12px}
 .step-number{
-  width:29px;height:29px;border-radius:999px;
+  width:29px;
+  height:29px;
+  border-radius:999px;
   background:linear-gradient(135deg,var(--gold2),var(--gold));
-  color:#15100a;display:flex;align-items:center;justify-content:center;
-  font-weight:900;font-size:13px;
+  color:#15100a;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-weight:900;
+  font-size:13px;
 }
 .service-grid,.professional-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:10px;margin:10px 0 4px}
 .service-card,.professional-card{
@@ -374,12 +313,18 @@ button:hover,.btn:hover{transform:translateY(-1px);opacity:.94}
   background:var(--gold);
 }
 .admin-card-btn .admin-icon{
-  width:44px;height:44px;border-radius:17px;
-  display:flex;align-items:center;justify-content:center;
-  font-size:23px;margin-bottom:10px;
+  width:44px;
+  height:44px;
+  border-radius:17px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:23px;
+  margin-bottom:10px;
   background:rgba(255,255,255,.10);
   border:1px solid rgba(255,255,255,.12);
-  position:relative;z-index:2;
+  position:relative;
+  z-index:2;
 }
 .admin-card-btn strong{display:block;font-size:16px;margin-bottom:5px;position:relative;z-index:2}
 .admin-card-btn small{display:block;color:rgba(255,255,255,.72);font-size:12px;line-height:1.35;font-weight:600;position:relative;z-index:2}
@@ -465,7 +410,7 @@ button:hover,.btn:hover{transform:translateY(-1px);opacity:.94}
   flex-wrap:wrap;
 }
 .blocked-list{display:grid;gap:8px;margin-top:8px}
-.lunch-note{
+.lunch-note,.locked-box{
   background:rgba(212,160,52,.10);
   border:1px solid rgba(212,160,52,.25);
   color:#ffe2a1;
@@ -486,16 +431,6 @@ button:hover,.btn:hover{transform:translateY(-1px);opacity:.94}
   justify-content:space-between;
   font-size:13px;
   color:var(--muted);
-}
-.sound-box,.campaign-box,.locked-box{
-  background:rgba(212,160,52,.10);
-  border:1px solid rgba(212,160,52,.25);
-  color:#ffe2a1;
-  padding:12px;
-  border-radius:16px;
-  font-size:13px;
-  line-height:1.5;
-  margin-bottom:12px;
 }
 .owner-popup-wrap{display:grid;gap:12px;margin-bottom:16px}
 .owner-popup{
@@ -532,8 +467,13 @@ details.admin-section[open] summary:after{content:"−"}
 .admin-section-body{padding:0 15px 15px}
 .logo-preview-wrap{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:12px}
 .logo-preview{
-  width:86px;height:86px;border-radius:24px;overflow:hidden;
-  display:flex;align-items:center;justify-content:center;
+  width:86px;
+  height:86px;
+  border-radius:24px;
+  overflow:hidden;
+  display:flex;
+  align-items:center;
+  justify-content:center;
   background:linear-gradient(135deg,var(--gold),#7a510f);
   border:1px solid rgba(255,255,255,.14);
   font-size:38px;
@@ -626,18 +566,20 @@ details.admin-section[open] summary:after{content:"−"}
   box-shadow:0 24px 56px rgba(0,0,0,.46);
 }
 .app-modal-icon{
-  width:52px;height:52px;border-radius:18px;
-  display:flex;align-items:center;justify-content:center;
-  font-size:24px;background:rgba(255,255,255,.06);
+  width:52px;
+  height:52px;
+  border-radius:18px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:24px;
+  background:rgba(255,255,255,.06);
   margin-bottom:10px;
 }
 .app-modal-card h3{margin:0 0 8px;font-size:22px;color:var(--text)}
 .app-modal-card p{margin:0;color:var(--muted)}
 .app-modal-actions{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:18px}
 @media(max-width:1100px){
-  .phone-preview{display:none}
-  .hero{min-height:auto}
-  .brand{max-width:none}
   .brand h1{font-size:32px}
   .admin-menu{grid-template-columns:repeat(3,1fr)}
 }
@@ -656,7 +598,6 @@ details.admin-section[open] summary:after{content:"−"}
   .slots,.available-slots{grid-template-columns:repeat(3,1fr)}
   button,.btn{width:100%;min-height:46px}
   .admin-menu{grid-template-columns:1fr;gap:12px}
-  .admin-card-btn{min-height:104px}
   .summary-grid,.finance-grid{grid-template-columns:repeat(2,1fr)}
   .appointment,.client-item,.professional-item{grid-template-columns:1fr}
   .admin-topbar{align-items:stretch}
@@ -675,36 +616,13 @@ details.admin-section[open] summary:after{content:"−"}
       <div class="logo" id="mainLogo">✂️</div>
       <div>
         <h1 id="brandName">Barber Pro Demo</h1>
-        <p id="brandSubtitle">Agendamento moderno com painel administrativo, agenda, clientes, financeiro e área avançada bloqueada para suporte.</p>
+        <p id="brandSubtitle">Agendamento moderno com painel administrativo, agenda, clientes, financeiro e Administração Geral bloqueada para suporte.</p>
       </div>
     </div>
 
     <div class="brand-contact">
       <div id="brandAddress">📍 Av. Demo Barber, 100 - Centro, São Paulo - SP</div>
       <div id="brandWhatsapp">📲 WhatsApp: (11) 99999-9999</div>
-    </div>
-
-    <div class="phone-preview">
-      <div class="phone-screen">
-        <div class="phone-title">BARBER PRO</div>
-        <div class="phone-subtitle">Agendamento Online</div>
-        <div class="phone-mini-label">Serviço</div>
-        <div class="phone-option"><span>✂️ Corte</span><strong>R$ 35</strong></div>
-        <div class="phone-option"><span>🧔 Corte + Barba</span><strong>R$ 55</strong></div>
-        <div class="phone-mini-label">Profissional</div>
-        <div class="phone-option"><span>👤 Wagner</span><strong>Livre</strong></div>
-        <div class="phone-option"><span>👤 João</span><strong>Livre</strong></div>
-        <div class="phone-mini-label">Horários</div>
-        <div class="phone-time-grid">
-          <div class="phone-time">09:00</div>
-          <div class="phone-time">10:00</div>
-          <div class="phone-time">11:00</div>
-          <div class="phone-time active">14:00</div>
-          <div class="phone-time">15:00</div>
-          <div class="phone-time">16:00</div>
-        </div>
-        <div class="phone-cta">Agendar horário</div>
-      </div>
     </div>
   </section>
 
@@ -903,14 +821,14 @@ details.admin-section[open] summary:after{content:"−"}
 
   <section id="ownerLoginView" class="card client-shell hidden">
     <h2>Entrar no painel</h2>
-    <p style="color:var(--muted)">Acesso para administrador, suporte ou profissional colaborador.</p>
+    <p style="color:var(--muted)">Acesso para suporte, administrador ou profissional colaborador.</p>
 
     <div id="loginMsg" class="message"></div>
 
     <div class="form-row">
       <div>
-        <label>Login / E-mail</label>
-        <input id="ownerEmail" type="email" value="demo@barberpro.com">
+        <label>Login</label>
+        <input id="ownerEmail" type="text" value="1234">
       </div>
       <div>
         <label>Senha</label>
@@ -921,11 +839,10 @@ details.admin-section[open] summary:after{content:"−"}
     <button class="primary" onclick="ownerLogin()">Entrar no painel</button>
 
     <div class="locked-box" style="margin-top:15px">
-      <strong>Acessos demo:</strong><br>
-      Dono: demo@barberpro.com / 1234<br>
-      Suporte Isiquel: suporte@isiquel.com / 2026<br>
-      Wagner: wagner@barberpro.com / 1234<br>
-      João: joao@barberpro.com / 1234
+      <strong>Acesso principal por enquanto:</strong><br>
+      Suporte Isiquel: 1234 / 1234<br><br>
+      O dono da barbearia será cadastrado depois dentro das configurações.<br>
+      Barbeiros colaboradores serão liberados dentro da Administração Geral.
     </div>
 
     <div class="admin-mini">
@@ -972,7 +889,7 @@ details.admin-section[open] summary:after{content:"−"}
 
       <button id="tabGeneralAdmin" class="admin-card-btn" onclick="openOwnerTab('generalAdmin')">
         <span class="admin-icon">🔐</span>
-        <span><strong>Administração Geral</strong><small>Bloqueada para suporte</small></span>
+        <span><strong>Administração Geral</strong><small>Somente suporte por enquanto</small></span>
       </button>
 
       <button id="tabMySchedule" class="admin-card-btn hidden" onclick="openOwnerTab('mySchedule')">
@@ -985,8 +902,8 @@ details.admin-section[open] summary:after{content:"−"}
       <div class="card">
         <h2>Configurar aplicativo</h2>
 
-        <div class="sound-box">
-          🔔 Painel normal da barbearia. A parte avançada de profissionais fica separada em <strong>Administração Geral</strong>.
+        <div class="locked-box">
+          Painel normal da barbearia. A parte avançada de barbeiros fica separada em <strong>Administração Geral</strong>.
         </div>
 
         <div id="settingsMsg" class="message"></div>
@@ -1021,18 +938,32 @@ details.admin-section[open] summary:after{content:"−"}
           </div>
         </details>
 
-        <details class="admin-section">
-          <summary>Contato e localização</summary>
+        <details class="admin-section" open>
+          <summary>Login do dono / administrador</summary>
           <div class="admin-section-body">
+            <div class="locked-box">
+              Por enquanto você entra como suporte usando <strong>1234 / 1234</strong>. Depois você cadastra aqui o login e senha do dono.
+            </div>
+
             <div class="form-row">
               <div>
-                <label>WhatsApp do dono</label>
-                <input id="ownerWhatsapp" type="tel" placeholder="Ex: 11999999999">
+                <label>Login do dono</label>
+                <input id="adminEmail" type="text" placeholder="Ex: dono123">
               </div>
               <div>
                 <label>Senha do dono</label>
                 <input id="adminPassword" type="text" placeholder="Ex: 1234">
               </div>
+            </div>
+          </div>
+        </details>
+
+        <details class="admin-section">
+          <summary>Contato e localização</summary>
+          <div class="admin-section-body">
+            <div class="single">
+              <label>WhatsApp da barbearia</label>
+              <input id="ownerWhatsapp" type="tel" placeholder="Ex: 11999999999">
             </div>
 
             <div class="single">
@@ -1043,11 +974,6 @@ details.admin-section[open] summary:after{content:"−"}
             <div class="single">
               <label>Link do Google Maps</label>
               <input id="businessMapLink" type="text" placeholder="Opcional">
-            </div>
-
-            <div class="single">
-              <label>E-mail do administrador</label>
-              <input id="adminEmail" type="email" placeholder="demo@barberpro.com">
             </div>
           </div>
         </details>
@@ -1186,7 +1112,7 @@ details.admin-section[open] summary:after{content:"−"}
 
         <h3>Administração Geral</h3>
         <div class="locked-box">
-          A área <strong>Administração Geral</strong> está bloqueada para o dono por enquanto. Apenas o Suporte Isiquel consegue abrir e testar.
+          A área <strong>Administração Geral</strong> fica liberada apenas para o suporte por enquanto. O dono só acessa quando você liberar futuramente.
         </div>
       </div>
     </div>
@@ -1275,7 +1201,7 @@ details.admin-section[open] summary:after{content:"−"}
       <div style="display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;margin-bottom:14px">
         <div>
           <h2>Administração Geral</h2>
-          <span class="status finished">Área avançada bloqueada para suporte</span>
+          <span class="status finished">Área avançada somente para suporte</span>
         </div>
         <button class="secondary" onclick="loadAppointments()">Atualizar</button>
       </div>
@@ -1457,10 +1383,10 @@ const DEFAULT_SETTINGS={
   startTime:"08:00",
   endTime:"18:00",
   slotDuration:30,
-  adminEmail:"demo@barberpro.com",
-  adminPassword:"1234",
-  supportEmail:"suporte@isiquel.com",
-  supportPassword:"2026",
+  adminEmail:"",
+  adminPassword:"",
+  supportEmail:"1234",
+  supportPassword:"1234",
   blockedDates:[],
   blockedSlots:{},
   lunchBreaks:[
@@ -1645,7 +1571,7 @@ function normalizeProfessionals(list){
 }
 function allProfessionals(){
   settings.professionals=normalizeProfessionals(settings.professionals);
-  if(!settings.professionals.some(p=>p.isDefault)){
+  if(!settings.professionals.some(p=>p.isDefault)&&settings.professionals[0]){
     settings.professionals[0].isDefault=true;
   }
   return settings.professionals;
@@ -1839,6 +1765,8 @@ async function loadSettings(){
 
     if(snap.exists()){
       settings={...DEFAULT_SETTINGS,...snap.data()};
+      settings.supportEmail="1234";
+      settings.supportPassword="1234";
       settings.services=normalizeServices(settings.services);
       settings.professionals=normalizeProfessionals(settings.professionals);
       if(!settings.blockedSlots||typeof settings.blockedSlots!=="object")settings.blockedSlots={};
@@ -1846,7 +1774,6 @@ async function loadSettings(){
     }else{
       settings={...DEFAULT_SETTINGS};
       await saveSettingsDoc();
-      await seedDemoDataSafe(false);
     }
 
     if(!selectedServiceId)selectedServiceId=activeServices()[0]?.id||"corte";
@@ -1873,8 +1800,8 @@ function applySettingsToForm(){
   $("businessMapLink").value=settings.businessMapLink||"";
   $("confirmationMessage").value=settings.confirmationMessage||DEFAULT_CONFIRMATION_MESSAGE;
   $("clientCampaignMessage").value=String(settings.clientCampaignMessage||DEFAULT_CLIENT_CAMPAIGN_MESSAGE).replaceAll("\\n","\n");
-  $("adminEmail").value=settings.adminEmail||"demo@barberpro.com";
-  $("adminPassword").value=settings.adminPassword||"1234";
+  $("adminEmail").value=settings.adminEmail||"";
+  $("adminPassword").value=settings.adminPassword||"";
   $("startTime").value=settings.startTime||"08:00";
   $("endTime").value=settings.endTime||"18:00";
   $("slotDuration").value=String(settings.slotDuration||30);
@@ -1989,7 +1916,7 @@ function renderProfessionalsAdminList(){
       <div class="form-row-3">
         <div>
           <label>Login</label>
-          <input id="proLogin_${p.id}" type="email" value="${p.login||""}">
+          <input id="proLogin_${p.id}" type="text" value="${p.login||""}">
         </div>
         <div>
           <label>Senha</label>
@@ -2042,7 +1969,7 @@ function addProfessionalForm(){
     id,
     name:"Novo Barbeiro",
     whatsapp:"",
-    login:`${id}@barberpro.com`,
+    login:`barbeiro${Date.now()}@demo.com`,
     password:"1234",
     commission:40,
     commissionMode:"shop_pays_barber",
@@ -2162,7 +2089,7 @@ async function saveSettings(){
     return;
   }
 
-  const isSavingGeneralAdmin=document.getElementById("ownerGeneralAdmin")&&!$("ownerGeneralAdmin").classList.contains("hidden");
+  const isSavingGeneralAdmin=$("ownerGeneralAdmin")&&!$("ownerGeneralAdmin").classList.contains("hidden");
 
   if(isSavingGeneralAdmin&&currentUser?.role!=="support"){
     showToast("Administração Geral está bloqueada para o dono por enquanto.","err");
@@ -2175,8 +2102,10 @@ async function saveSettings(){
   settings.businessMapLink=$("businessMapLink").value.trim();
   settings.confirmationMessage=$("confirmationMessage").value.trim()||DEFAULT_CONFIRMATION_MESSAGE;
   settings.clientCampaignMessage=$("clientCampaignMessage").value.trim()||DEFAULT_CLIENT_CAMPAIGN_MESSAGE;
-  settings.adminEmail=$("adminEmail").value.trim()||"demo@barberpro.com";
-  settings.adminPassword=$("adminPassword").value.trim()||"1234";
+  settings.adminEmail=$("adminEmail").value.trim();
+  settings.adminPassword=$("adminPassword").value.trim();
+  settings.supportEmail="1234";
+  settings.supportPassword="1234";
   settings.startTime=$("startTime").value||"08:00";
   settings.endTime=$("endTime").value||"18:00";
   settings.slotDuration=Number($("slotDuration").value||30);
@@ -2598,7 +2527,7 @@ async function renderClientDates(){
   }
 
   list.innerHTML=dates.map(item=>`
-    <button class="date-btn" onclick="selectClientDate('${item.dateStr}')">
+    <button class="date-btn" data-date="${item.dateStr}" onclick="selectClientDate('${item.dateStr}')">
       <strong>${getDayName(item.dateObj)}</strong>
       <span>${formatDateBR(item.dateStr)}</span>
     </button>
@@ -2609,7 +2538,7 @@ async function selectClientDate(dateStr){
   selectedSlot="";
 
   document.querySelectorAll("#dateList .date-btn").forEach(btn=>btn.classList.remove("active"));
-  event.currentTarget.classList.add("active");
+  document.querySelector(`#dateList .date-btn[data-date="${dateStr}"]`)?.classList.add("active");
 
   await loadBookedAppointments();
 
@@ -2623,6 +2552,7 @@ async function selectClientDate(dateStr){
     return`
       <button 
         class="slot ${busy?"busy":""}" 
+        data-time="${t}"
         ${busy?"disabled":""} 
         onclick="selectClientSlot('${t}')"
       >
@@ -2635,7 +2565,7 @@ function selectClientSlot(time){
   selectedSlot=time;
 
   document.querySelectorAll("#slotList .slot").forEach(btn=>btn.classList.remove("active"));
-  event.currentTarget.classList.add("active");
+  document.querySelector(`#slotList .slot[data-time="${time}"]`)?.classList.add("active");
 }
 async function bookAppointment(){
   if(!currentClient){
@@ -2730,7 +2660,7 @@ async function renderAvailableTimes(){
       <h3>${getDayName(day.dateObj)} — ${formatDateBR(day.dateStr)}</h3>
       <div class="available-slots">
         ${day.slots.map(obj=>`
-          <button class="slot" onclick="selectQuickSlot('${day.dateStr}','${obj.time}','${obj.pro.id}')">
+          <button class="slot" data-quick="${day.dateStr}_${obj.time}_${obj.pro.id}" onclick="selectQuickSlot('${day.dateStr}','${obj.time}','${obj.pro.id}')">
             ${obj.time}<br><small>${obj.pro.name}</small>
           </button>
         `).join("")}
@@ -2742,7 +2672,7 @@ function selectQuickSlot(date,time,proId){
   quickSelected={date,time,proId};
 
   document.querySelectorAll("#availableList .slot").forEach(btn=>btn.classList.remove("active"));
-  event.currentTarget.classList.add("active");
+  document.querySelector(`#availableList .slot[data-quick="${date}_${time}_${proId}"]`)?.classList.add("active");
 
   const service=getServiceById(quickServiceId||selectedServiceId);
   const pro=getProfessionalById(proId);
@@ -2899,15 +2829,22 @@ function statusBadge(status){
 function ownerLogin(){
   startAudioContext();
 
-  const email=$("ownerEmail").value.trim();
+  const login=$("ownerEmail").value.trim();
   const pass=$("ownerPassword").value.trim();
 
-  if(email===(settings.adminEmail||"demo@barberpro.com")&&pass===(settings.adminPassword||"1234")){
-    currentUser={role:"admin",name:"Dono da barbearia",professionalId:null};
-  }else if(email===(settings.supportEmail||"suporte@isiquel.com")&&pass===(settings.supportPassword||"2026")){
+  currentUser=null;
+
+  if(login==="1234"&&pass==="1234"){
     currentUser={role:"support",name:"Suporte Isiquel",professionalId:null};
+  }else if(
+    settings.adminEmail &&
+    settings.adminPassword &&
+    login===String(settings.adminEmail).trim() &&
+    pass===String(settings.adminPassword).trim()
+  ){
+    currentUser={role:"admin",name:"Dono da barbearia",professionalId:null};
   }else{
-    const pro=allProfessionals().find(p=>p.login===email&&p.password===pass&&p.active);
+    const pro=allProfessionals().find(p=>p.login===login&&p.password===pass&&p.active);
     if(pro){
       currentUser={role:"professional",name:pro.name,professionalId:pro.id};
     }
@@ -2941,7 +2878,7 @@ function configurePanelByRole(){
   if(!currentUser)return;
 
   $("panelTitle").textContent=currentUser.role==="professional" ? `Painel do profissional — ${currentUser.name}` : `Painel — ${currentUser.name}`;
-  $("panelSubtitle").textContent=currentUser.role==="professional" ? "Você visualiza somente sua própria agenda." : "Painel administrativo da barbearia.";
+  $("panelSubtitle").textContent=currentUser.role==="support" ? "Acesso de suporte liberado para Administração Geral." : currentUser.role==="professional" ? "Você visualiza somente sua própria agenda." : "Painel administrativo da barbearia.";
 
   const normalTabs=["tabSchedule","tabAppointments","tabClients","tabFinance","tabGeneralAdmin"];
   const proTab=$("tabMySchedule");
@@ -3260,7 +3197,6 @@ function renderFinance(){
   const valid=appointmentsCache.filter(a=>a.status==="finished"||a.status==="confirmed");
   const todayRevenue=valid.filter(a=>a.date===today).reduce((sum,a)=>sum+appointmentValue(a),0);
   const monthRevenue=valid.filter(a=>a.date?.slice(0,7)===month).reduce((sum,a)=>sum+appointmentValue(a),0);
-  const totalRevenue=valid.reduce((sum,a)=>sum+appointmentValue(a),0);
   const shopRevenue=valid.reduce((sum,a)=>sum+shopAmountForAppointment(a),0);
   const professionalRevenue=valid.reduce((sum,a)=>sum+professionalAmountForAppointment(a),0);
 
