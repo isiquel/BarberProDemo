@@ -4,15 +4,13 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 <meta name="theme-color" content="#050505">
-<meta name="mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<title>Barber Pro Demo Avançado</title>
+<title>Barber Pro Demo</title>
 
 <style>
 :root{
   --bg:#050505;
-  --card:#111;
   --soft:#080808;
+  --card:#111;
   --text:#f8f2e6;
   --muted:#c8bfae;
   --gold:#c99524;
@@ -25,7 +23,6 @@
   --radius:26px;
 }
 *{box-sizing:border-box}
-html{scroll-behavior:smooth}
 body{
   margin:0;
   font-family:Arial,Helvetica,sans-serif;
@@ -34,16 +31,13 @@ body{
   background:
     radial-gradient(circle at 70% 12%,rgba(244,208,111,.13),transparent 28%),
     radial-gradient(circle at 12% 76%,rgba(201,149,36,.10),transparent 32%),
-    linear-gradient(135deg,rgba(255,255,255,.018) 25%,transparent 25%) 0 0/18px 18px,
-    linear-gradient(225deg,rgba(255,255,255,.014) 25%,transparent 25%) 0 0/18px 18px,
     #050505;
 }
 button,input,select,textarea{font-family:inherit}
-button{border:none;outline:none}
 .app{max-width:1180px;margin:0 auto;padding:16px}
 .hidden{display:none!important}
 .hero{
-  min-height:350px;
+  min-height:340px;
   border-radius:34px;
   padding:34px;
   margin-bottom:18px;
@@ -74,7 +68,6 @@ button{border:none;outline:none}
   top:10px;
   opacity:.85;
   background:radial-gradient(circle,rgba(244,208,111,.25),rgba(244,208,111,.06) 45%,transparent 70%);
-  filter:blur(1px);
 }
 .brand{
   display:flex;
@@ -108,7 +101,7 @@ button{border:none;outline:none}
   text-shadow:0 4px 22px rgba(0,0,0,.55);
 }
 .brand h1::after{
-  content:"Sistema Avançado Multi Profissionais";
+  content:"Sistema de Agendamento Online";
   display:block;
   margin-top:14px;
   font-size:18px;
@@ -153,18 +146,6 @@ button{border:none;outline:none}
   box-shadow:0 35px 80px rgba(0,0,0,.75),-20px 20px 75px rgba(201,149,36,.12);
   transform:rotate(2.5deg);
 }
-.phone-preview::before{
-  content:"";
-  position:absolute;
-  left:50%;
-  top:11px;
-  transform:translateX(-50%);
-  width:96px;
-  height:21px;
-  border-radius:0 0 16px 16px;
-  background:#050505;
-  z-index:4;
-}
 .phone-screen{
   height:100%;
   border-radius:32px;
@@ -173,7 +154,7 @@ button{border:none;outline:none}
   border:1px solid rgba(244,208,111,.16);
   padding:36px 18px 18px;
 }
-.phone-title{text-align:center;color:#fff;font-weight:900;letter-spacing:.5px;margin-bottom:4px}
+.phone-title{text-align:center;color:#fff;font-weight:900;margin-bottom:4px}
 .phone-subtitle{text-align:center;color:var(--gold2);font-size:12px;margin-bottom:18px}
 .phone-mini-label{font-size:12px;color:#d8cfbe;margin:10px 0 7px;font-weight:800}
 .phone-option{
@@ -287,16 +268,10 @@ button:hover,.btn:hover{transform:translateY(-1px);opacity:.94}
 .confirm-box{background:rgba(212,160,52,.10);border-color:rgba(212,160,52,.24)}
 .step-head{display:flex;align-items:center;gap:9px;margin-bottom:12px}
 .step-number{
-  width:29px;
-  height:29px;
-  border-radius:999px;
+  width:29px;height:29px;border-radius:999px;
   background:linear-gradient(135deg,var(--gold2),var(--gold));
-  color:#15100a;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-weight:900;
-  font-size:13px;
+  color:#15100a;display:flex;align-items:center;justify-content:center;
+  font-weight:900;font-size:13px;
 }
 .service-grid,.professional-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:10px;margin:10px 0 4px}
 .service-card,.professional-card{
@@ -399,18 +374,12 @@ button:hover,.btn:hover{transform:translateY(-1px);opacity:.94}
   background:var(--gold);
 }
 .admin-card-btn .admin-icon{
-  width:44px;
-  height:44px;
-  border-radius:17px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-size:23px;
-  margin-bottom:10px;
+  width:44px;height:44px;border-radius:17px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:23px;margin-bottom:10px;
   background:rgba(255,255,255,.10);
   border:1px solid rgba(255,255,255,.12);
-  position:relative;
-  z-index:2;
+  position:relative;z-index:2;
 }
 .admin-card-btn strong{display:block;font-size:16px;margin-bottom:5px;position:relative;z-index:2}
 .admin-card-btn small{display:block;color:rgba(255,255,255,.72);font-size:12px;line-height:1.35;font-weight:600;position:relative;z-index:2}
@@ -563,13 +532,8 @@ details.admin-section[open] summary:after{content:"−"}
 .admin-section-body{padding:0 15px 15px}
 .logo-preview-wrap{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:12px}
 .logo-preview{
-  width:86px;
-  height:86px;
-  border-radius:24px;
-  overflow:hidden;
-  display:flex;
-  align-items:center;
-  justify-content:center;
+  width:86px;height:86px;border-radius:24px;overflow:hidden;
+  display:flex;align-items:center;justify-content:center;
   background:linear-gradient(135deg,var(--gold),#7a510f);
   border:1px solid rgba(255,255,255,.14);
   font-size:38px;
@@ -662,14 +626,9 @@ details.admin-section[open] summary:after{content:"−"}
   box-shadow:0 24px 56px rgba(0,0,0,.46);
 }
 .app-modal-icon{
-  width:52px;
-  height:52px;
-  border-radius:18px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-size:24px;
-  background:rgba(255,255,255,.06);
+  width:52px;height:52px;border-radius:18px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:24px;background:rgba(255,255,255,.06);
   margin-bottom:10px;
 }
 .app-modal-card h3{margin:0 0 8px;font-size:22px;color:var(--text)}
@@ -716,7 +675,7 @@ details.admin-section[open] summary:after{content:"−"}
       <div class="logo" id="mainLogo">✂️</div>
       <div>
         <h1 id="brandName">Barber Pro Demo</h1>
-        <p id="brandSubtitle">Agendamento moderno com múltiplos profissionais, agenda individual, comissões e financeiro.</p>
+        <p id="brandSubtitle">Agendamento moderno com painel administrativo, agenda, clientes, financeiro e área avançada bloqueada para suporte.</p>
       </div>
     </div>
 
@@ -725,16 +684,16 @@ details.admin-section[open] summary:after{content:"−"}
       <div id="brandWhatsapp">📲 WhatsApp: (11) 99999-9999</div>
     </div>
 
-    <div class="phone-preview" aria-hidden="true">
+    <div class="phone-preview">
       <div class="phone-screen">
         <div class="phone-title">BARBER PRO</div>
-        <div class="phone-subtitle">Multi Profissionais</div>
+        <div class="phone-subtitle">Agendamento Online</div>
         <div class="phone-mini-label">Serviço</div>
         <div class="phone-option"><span>✂️ Corte</span><strong>R$ 35</strong></div>
         <div class="phone-option"><span>🧔 Corte + Barba</span><strong>R$ 55</strong></div>
         <div class="phone-mini-label">Profissional</div>
-        <div class="phone-option"><span>👤 Wagner</span><strong>Disponível</strong></div>
-        <div class="phone-option"><span>👤 João</span><strong>Disponível</strong></div>
+        <div class="phone-option"><span>👤 Wagner</span><strong>Livre</strong></div>
+        <div class="phone-option"><span>👤 João</span><strong>Livre</strong></div>
         <div class="phone-mini-label">Horários</div>
         <div class="phone-time-grid">
           <div class="phone-time">09:00</div>
@@ -817,16 +776,14 @@ details.admin-section[open] summary:after{content:"−"}
           <h3>Confirmar horário</h3>
           <p id="quickConfirmText"></p>
 
-          <div id="quickClientBox">
-            <div class="form-row">
-              <div>
-                <label>Seu nome</label>
-                <input id="quickName" type="text" placeholder="Ex: João Silva">
-              </div>
-              <div>
-                <label>WhatsApp</label>
-                <input id="quickPhone" type="tel" placeholder="Ex: 11999999999">
-              </div>
+          <div class="form-row">
+            <div>
+              <label>Seu nome</label>
+              <input id="quickName" type="text" placeholder="Ex: João Silva">
+            </div>
+            <div>
+              <label>WhatsApp</label>
+              <input id="quickPhone" type="tel" placeholder="Ex: 11999999999">
             </div>
           </div>
 
@@ -933,7 +890,7 @@ details.admin-section[open] summary:after{content:"−"}
 
       <div id="myAppointmentsMsg" class="message"></div>
 
-      <div id="myAppointmentsLookup" class="step-card">
+      <div class="step-card">
         <label>Digite seu WhatsApp</label>
         <input id="myAppointmentsPhone" type="tel" placeholder="Ex: 11999999999">
         <br><br>
@@ -946,7 +903,7 @@ details.admin-section[open] summary:after{content:"−"}
 
   <section id="ownerLoginView" class="card client-shell hidden">
     <h2>Entrar no painel</h2>
-    <p style="color:var(--muted)">Acesso para administrador geral, suporte ou profissional colaborador.</p>
+    <p style="color:var(--muted)">Acesso para administrador, suporte ou profissional colaborador.</p>
 
     <div id="loginMsg" class="message"></div>
 
@@ -965,10 +922,10 @@ details.admin-section[open] summary:after{content:"−"}
 
     <div class="locked-box" style="margin-top:15px">
       <strong>Acessos demo:</strong><br>
-      Administrador: demo@barberpro.com / 1234<br>
+      Dono: demo@barberpro.com / 1234<br>
       Suporte Isiquel: suporte@isiquel.com / 2026<br>
-      Barbeiro Wagner: wagner@barberpro.com / 1234<br>
-      Barbeiro João: joao@barberpro.com / 1234
+      Wagner: wagner@barberpro.com / 1234<br>
+      João: joao@barberpro.com / 1234
     </div>
 
     <div class="admin-mini">
@@ -979,8 +936,8 @@ details.admin-section[open] summary:after{content:"−"}
   <section id="ownerView" class="hidden">
     <div class="admin-topbar">
       <div>
-        <strong id="panelTitle">Painel do administrador</strong>
-        <span id="panelSubtitle">Você está logado na versão demonstrativa avançada.</span>
+        <strong id="panelTitle">Painel administrativo</strong>
+        <span id="panelSubtitle">Sistema demonstrativo Barber Pro.</span>
       </div>
       <div class="admin-topbar-actions">
         <button class="secondary" onclick="showClientHome()">Área do cliente</button>
@@ -995,27 +952,32 @@ details.admin-section[open] summary:after{content:"−"}
     <div class="admin-menu" id="adminMenu">
       <button id="tabSchedule" class="admin-card-btn active" onclick="openOwnerTab('schedule')">
         <span class="admin-icon">⚙️</span>
-        <span><strong>Configurações</strong><small>Serviços, profissionais, horários e bloqueios</small></span>
+        <span><strong>Configurações</strong><small>Painel normal da barbearia</small></span>
       </button>
 
       <button id="tabAppointments" class="admin-card-btn" onclick="openOwnerTab('appointments')">
         <span class="admin-icon">📅</span>
-        <span><strong>Agenda</strong><small>Agenda geral e por barbeiro</small></span>
+        <span><strong>Agenda</strong><small>Agendamentos gerais</small></span>
       </button>
 
       <button id="tabClients" class="admin-card-btn" onclick="openOwnerTab('clients')">
         <span class="admin-icon">👥</span>
-        <span><strong>Clientes</strong><small>Lista e histórico de clientes</small></span>
+        <span><strong>Clientes</strong><small>Lista e WhatsApp</small></span>
       </button>
 
       <button id="tabFinance" class="admin-card-btn" onclick="openOwnerTab('finance')">
         <span class="admin-icon">💰</span>
-        <span><strong>Financeiro</strong><small>Faturamento e comissões</small></span>
+        <span><strong>Financeiro</strong><small>Receita e comissões</small></span>
       </button>
 
-      <button id="tabMySchedule" class="admin-card-btn" onclick="openOwnerTab('mySchedule')">
+      <button id="tabGeneralAdmin" class="admin-card-btn" onclick="openOwnerTab('generalAdmin')">
+        <span class="admin-icon">🔐</span>
+        <span><strong>Administração Geral</strong><small>Bloqueada para suporte</small></span>
+      </button>
+
+      <button id="tabMySchedule" class="admin-card-btn hidden" onclick="openOwnerTab('mySchedule')">
         <span class="admin-icon">✂️</span>
-        <span><strong>Minha agenda</strong><small>Apenas agenda do profissional</small></span>
+        <span><strong>Minha agenda</strong><small>Somente minha agenda</small></span>
       </button>
     </div>
 
@@ -1024,20 +986,16 @@ details.admin-section[open] summary:after{content:"−"}
         <h2>Configurar aplicativo</h2>
 
         <div class="sound-box">
-          🔔 Sistema demo avançado: permite testar vários profissionais, comissões e agenda individual.
+          🔔 Painel normal da barbearia. A parte avançada de profissionais fica separada em <strong>Administração Geral</strong>.
         </div>
 
         <div id="settingsMsg" class="message"></div>
 
         <details class="admin-section" open>
-          <summary>🔒 Identidade da demo</summary>
+          <summary>Identidade da barbearia</summary>
           <div class="admin-section-body">
-            <div class="locked-box">
-              Esta versão usa o Firebase separado <strong>barber-pro-demo</strong>. Não limpa clientes e não apaga agendamentos antigos.
-            </div>
-
             <div class="single">
-              <label>Nome da barbearia demo</label>
+              <label>Nome da barbearia</label>
               <input id="businessName" type="text" value="Barber Pro Demo">
             </div>
 
@@ -1057,28 +1015,14 @@ details.admin-section[open] summary:after{content:"−"}
         </details>
 
         <details class="admin-section" open>
-          <summary>✂️ Serviços oferecidos</summary>
+          <summary>Serviços oferecidos</summary>
           <div class="admin-section-body">
-            <div class="locked-box">
-              Cada serviço tem duração e valor. Depois você escolhe quais profissionais fazem cada serviço.
-            </div>
             <div id="servicesAdminList"></div>
           </div>
         </details>
 
-        <details class="admin-section" open>
-          <summary>👤 Barbeiros / profissionais</summary>
-          <div class="admin-section-body">
-            <div class="locked-box">
-              Cadastre login, senha, comissão e serviços de cada profissional.
-            </div>
-            <div id="professionalsAdminList"></div>
-            <button class="primary" onclick="addProfessionalForm()">Adicionar profissional</button>
-          </div>
-        </details>
-
         <details class="admin-section">
-          <summary>📍 Contato e localização</summary>
+          <summary>Contato e localização</summary>
           <div class="admin-section-body">
             <div class="form-row">
               <div>
@@ -1098,7 +1042,7 @@ details.admin-section[open] summary:after{content:"−"}
 
             <div class="single">
               <label>Link do Google Maps</label>
-              <input id="businessMapLink" type="text" placeholder="Opcional. Se deixar vazio, abre rota pelo endereço.">
+              <input id="businessMapLink" type="text" placeholder="Opcional">
             </div>
 
             <div class="single">
@@ -1109,7 +1053,7 @@ details.admin-section[open] summary:after{content:"−"}
         </details>
 
         <details class="admin-section" open>
-          <summary>🗓️ Dias e horários gerais</summary>
+          <summary>Dias e horários gerais</summary>
           <div class="admin-section-body">
             <h3>Dias de trabalho</h3>
 
@@ -1148,26 +1092,22 @@ details.admin-section[open] summary:after{content:"−"}
         </details>
 
         <details class="admin-section" open>
-          <summary>🚫 Bloquear dias, horários e almoço</summary>
+          <summary>Bloqueios e almoço</summary>
           <div class="admin-section-body">
-            <h3>Bloquear um dia inteiro</h3>
-
+            <h3>Bloquear dia inteiro</h3>
             <div class="form-row">
               <div>
-                <label>Data para bloquear</label>
+                <label>Data</label>
                 <input id="blockDate" type="date">
               </div>
               <div style="display:flex;align-items:flex-end">
                 <button class="secondary" onclick="addBlockedDate()">Bloquear data</button>
               </div>
             </div>
-
             <div id="blockedDatesList" class="blocked-list"></div>
 
-            <h3>🍽️ Horário de almoço / pausas fixas</h3>
-            <div class="lunch-note">
-              Bloqueia automaticamente todos os profissionais, por exemplo das <strong>12:00 às 13:00</strong>.
-            </div>
+            <h3>Horário de almoço / pausa</h3>
+            <div class="lunch-note">Exemplo: 12:00 às 13:00.</div>
 
             <div class="form-row">
               <div>
@@ -1182,19 +1122,15 @@ details.admin-section[open] summary:after{content:"−"}
 
             <div class="single">
               <label>Nome do bloqueio</label>
-              <input id="lunchLabel" type="text" value="Almoço" placeholder="Ex: Almoço, Café, Pausa">
+              <input id="lunchLabel" type="text" value="Almoço">
             </div>
 
             <button class="primary" onclick="addLunchBreak()">Adicionar almoço / pausa</button>
 
-            <h3>Almoços e pausas cadastrados</h3>
+            <h3>Pausas cadastradas</h3>
             <div id="lunchBreaksList" class="blocked-list"></div>
 
-            <h3>Bloquear apenas um horário</h3>
-            <div class="locked-box">
-              Este bloqueio é geral. Se precisar bloqueio por barbeiro, podemos adicionar depois.
-            </div>
-
+            <h3>Bloquear horário específico</h3>
             <div class="form-row">
               <div>
                 <label>Data</label>
@@ -1214,7 +1150,7 @@ details.admin-section[open] summary:after{content:"−"}
         </details>
 
         <details class="admin-section">
-          <summary>💬 Mensagens automáticas</summary>
+          <summary>Mensagens automáticas</summary>
           <div class="admin-section-body">
             <div class="single">
               <label>Mensagem de confirmação</label>
@@ -1248,15 +1184,10 @@ details.admin-section[open] summary:after{content:"−"}
           <button class="blue" onclick="openBusinessMap()">Ver localização</button>
         </div>
 
-        <h3>Segurança da demo</h3>
-        <div class="empty" style="text-align:left">
-          <p><strong>Não limpa Firebase:</strong> esta versão não possui botão para apagar todos os dados.</p>
-          <p><strong>Agendamentos antigos:</strong> se estiverem sem barbeiro, entram automaticamente como Wagner.</p>
-          <p><strong>Suporte Isiquel:</strong> vê tudo para manutenção.</p>
+        <h3>Administração Geral</h3>
+        <div class="locked-box">
+          A área <strong>Administração Geral</strong> está bloqueada para o dono por enquanto. Apenas o Suporte Isiquel consegue abrir e testar.
         </div>
-
-        <br>
-        <button class="secondary" onclick="seedDemoDataSafe()">Adicionar dados fictícios sem apagar nada</button>
       </div>
     </div>
 
@@ -1322,22 +1253,68 @@ details.admin-section[open] summary:after{content:"−"}
     <div id="ownerFinance" class="card hidden">
       <div style="display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;margin-bottom:14px">
         <div>
-          <h2>Financeiro / Comissões</h2>
-          <span class="status finished">Faturamento geral e comissão por barbeiro</span>
+          <h2>Financeiro</h2>
+          <span class="status finished">Faturamento e comissões</span>
         </div>
         <button class="secondary" onclick="renderFinance()">Atualizar</button>
       </div>
 
       <div id="financeGrid" class="finance-grid"></div>
 
-      <h3>Comissão por profissional</h3>
+      <h3>Resultado por profissional</h3>
       <div id="financeByProfessional"></div>
 
       <h3>Faturamento por serviço</h3>
       <div id="financeByService"></div>
 
-      <h3>Movimentações finalizadas/confirmadas</h3>
+      <h3>Movimentações</h3>
       <div id="financeMovements"></div>
+    </div>
+
+    <div id="ownerGeneralAdmin" class="card hidden">
+      <div style="display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;margin-bottom:14px">
+        <div>
+          <h2>Administração Geral</h2>
+          <span class="status finished">Área avançada bloqueada para suporte</span>
+        </div>
+        <button class="secondary" onclick="loadAppointments()">Atualizar</button>
+      </div>
+
+      <div class="locked-box">
+        🔐 Esta área está liberada apenas para o <strong>Suporte Isiquel</strong>. O dono da barbearia ainda não consegue editar esses recursos.
+      </div>
+
+      <details class="admin-section" open>
+        <summary>Cadastro e liberação de barbeiros</summary>
+        <div class="admin-section-body">
+          <div class="locked-box">
+            Aqui você libera login, senha, serviços e comissão de cada barbeiro.
+          </div>
+
+          <div id="professionalsAdminList"></div>
+
+          <button class="primary" onclick="addProfessionalForm()">Adicionar barbeiro</button>
+          <br><br>
+          <button class="primary" onclick="saveSettings()">Salvar profissionais</button>
+        </div>
+      </details>
+
+      <details class="admin-section" open>
+        <summary>Resumo de comissões</summary>
+        <div class="admin-section-body">
+          <div id="generalAdminFinance"></div>
+        </div>
+      </details>
+
+      <details class="admin-section">
+        <summary>Dados fictícios de teste</summary>
+        <div class="admin-section-body">
+          <div class="locked-box">
+            Esse botão adiciona dados fictícios, mas não apaga clientes e não limpa agendamentos.
+          </div>
+          <button class="secondary" onclick="seedDemoDataSafe()">Adicionar dados fictícios sem apagar nada</button>
+        </div>
+      </details>
     </div>
   </section>
 
@@ -1447,6 +1424,7 @@ const DEFAULT_PROFESSIONALS=[
     login:"wagner@barberpro.com",
     password:"1234",
     commission:40,
+    commissionMode:"shop_pays_barber",
     services:["corte","barba","corte_barba","completo"],
     active:true,
     isDefault:true
@@ -1458,19 +1436,9 @@ const DEFAULT_PROFESSIONALS=[
     login:"joao@barberpro.com",
     password:"1234",
     commission:40,
+    commissionMode:"shop_pays_barber",
     services:["corte","barba","corte_barba"],
     active:true,
-    isDefault:false
-  },
-  {
-    id:"mateus",
-    name:"Mateus",
-    whatsapp:"11977776666",
-    login:"mateus@barberpro.com",
-    password:"1234",
-    commission:35,
-    services:["corte","completo"],
-    active:false,
     isDefault:false
   }
 ];
@@ -1506,7 +1474,6 @@ let selectedSlot="";
 let selectedMonth="";
 let selectedServiceId="";
 let selectedProfessionalId="any";
-let selectedAssignedProfessionalId="";
 let quickSelected=null;
 let quickServiceId="";
 let quickProfessionalId="any";
@@ -1670,6 +1637,7 @@ function normalizeProfessionals(list){
     login:String(p.login||""),
     password:String(p.password||"1234"),
     commission:Number(p.commission ?? 40),
+    commissionMode:String(p.commissionMode||"shop_pays_barber"),
     services:Array.isArray(p.services)?p.services:activeServices().map(s=>s.id),
     active:typeof p.active==="boolean"?p.active:true,
     isDefault:Boolean(p.isDefault)
@@ -1690,11 +1658,6 @@ function defaultProfessional(){
 }
 function getProfessionalById(id){
   return allProfessionals().find(p=>p.id===id)||defaultProfessional();
-}
-function professionalDoesService(proId,serviceId){
-  if(proId==="any")return true;
-  const p=getProfessionalById(proId);
-  return p.active&&Array.isArray(p.services)&&p.services.includes(serviceId);
 }
 function professionalsForService(serviceId){
   return activeProfessionals().filter(p=>Array.isArray(p.services)&&p.services.includes(serviceId));
@@ -1723,14 +1686,32 @@ function appointmentProId(a){
 function appointmentProName(a){
   return a.professionalName||a.barberName||getProfessionalById(appointmentProId(a)).name;
 }
+function appointmentValue(item){
+  return Number(item.price ?? item.servicePrice ?? 0);
+}
+function commissionModeForAppointment(a){
+  return a.commissionMode||getProfessionalById(appointmentProId(a)).commissionMode||"shop_pays_barber";
+}
 function commissionPercentForAppointment(a){
   return Number(a.commissionPercent ?? getProfessionalById(appointmentProId(a)).commission ?? 0);
 }
-function commissionAmountForAppointment(a){
-  return appointmentValue(a)*(commissionPercentForAppointment(a)/100);
+function professionalAmountForAppointment(a){
+  const value=appointmentValue(a);
+  const percent=commissionPercentForAppointment(a);
+  const mode=commissionModeForAppointment(a);
+  if(mode==="barber_pays_shop")return value-(value*(percent/100));
+  return value*(percent/100);
 }
-function barbershopAmountForAppointment(a){
-  return appointmentValue(a)-commissionAmountForAppointment(a);
+function shopAmountForAppointment(a){
+  const value=appointmentValue(a);
+  const percent=commissionPercentForAppointment(a);
+  const mode=commissionModeForAppointment(a);
+  if(mode==="barber_pays_shop")return value*(percent/100);
+  return value-(value*(percent/100));
+}
+function commissionLabel(a){
+  const mode=commissionModeForAppointment(a);
+  return mode==="barber_pays_shop"?"Barbeiro paga à barbearia":"Barbearia paga ao barbeiro";
 }
 function makeWhatsAppUrl(phone,message=""){
   const phoneClean=cleanPhone(phone);
@@ -1807,9 +1788,6 @@ function sortAppointments(items){
 function sortClients(items){
   return items.sort((a,b)=>String(a.name||"").localeCompare(String(b.name||"")));
 }
-function appointmentValue(item){
-  return Number(item.price ?? item.servicePrice ?? 0);
-}
 function loadClientFromStorage(){
   try{
     const saved=localStorage.getItem("barberProDemoClient");
@@ -1844,29 +1822,6 @@ function updateBrand(){
   document.title=name;
   renderLogo("mainLogo");
   renderLogo("logoPreview");
-  updateManifest();
-}
-function updateManifest(){
-  try{
-    const manifest={
-      name:settings.businessName||"Barber Pro Demo",
-      short_name:"Barber Pro",
-      start_url:".",
-      display:"standalone",
-      background_color:"#080808",
-      theme_color:"#080808",
-      description:"Sistema de agendamento online para barbearia"
-    };
-    const blob=new Blob([JSON.stringify(manifest)],{type:"application/json"});
-    const url=URL.createObjectURL(blob);
-    let link=document.querySelector('link[rel="manifest"]');
-    if(!link){
-      link=document.createElement("link");
-      link.rel="manifest";
-      document.head.appendChild(link);
-    }
-    link.href=url;
-  }catch(e){}
 }
 async function saveSettingsDoc(){
   await setDoc(doc(db,...SETTINGS_PATH),settings);
@@ -1926,6 +1881,7 @@ function applySettingsToForm(){
 
   renderServicesAdminList();
   renderProfessionalsAdminList();
+
   renderServiceChoices("serviceList",selectedServiceId,id=>{
     selectedServiceId=id;
     selectedProfessionalId="any";
@@ -2040,14 +1996,22 @@ function renderProfessionalsAdminList(){
           <input id="proPassword_${p.id}" type="text" value="${p.password||"1234"}">
         </div>
         <div>
-          <label>Comissão %</label>
+          <label>Porcentagem %</label>
           <input id="proCommission_${p.id}" type="number" min="0" max="100" value="${Number(p.commission||0)}">
         </div>
       </div>
 
+      <div class="single">
+        <label>Modelo de comissão</label>
+        <select id="proCommissionMode_${p.id}">
+          <option value="shop_pays_barber" ${p.commissionMode==="shop_pays_barber"?"selected":""}>Barbearia paga comissão ao barbeiro</option>
+          <option value="barber_pays_shop" ${p.commissionMode==="barber_pays_shop"?"selected":""}>Barbeiro paga comissão à barbearia</option>
+        </select>
+      </div>
+
       <div class="form-row">
         <label class="day-check" style="margin:0">
-          <input id="proActive_${p.id}" type="checkbox" ${p.active?"checked":""}> Ativo
+          <input id="proActive_${p.id}" type="checkbox" ${p.active?"checked":""}> Ativo / liberado
         </label>
         <label class="day-check" style="margin:0">
           <input name="defaultProfessional" value="${p.id}" type="radio" ${p.isDefault?"checked":""}> Profissional padrão
@@ -2068,14 +2032,20 @@ function renderProfessionalsAdminList(){
   });
 }
 function addProfessionalForm(){
+  if(currentUser?.role!=="support"){
+    showToast("Administração Geral está liberada apenas para o Suporte Isiquel por enquanto.","err");
+    return;
+  }
+
   const id="prof_"+Date.now();
   settings.professionals.push({
     id,
-    name:"Novo Profissional",
+    name:"Novo Barbeiro",
     whatsapp:"",
     login:`${id}@barberpro.com`,
     password:"1234",
     commission:40,
+    commissionMode:"shop_pays_barber",
     services:activeServices().map(s=>s.id),
     active:true,
     isDefault:false
@@ -2140,7 +2110,7 @@ function renderProfessionalChoices(containerId,selectedId,onSelect,serviceId){
         data-professional-id="${p.id}"
       >
         <strong>${p.name}</strong>
-        <span>Comissão: ${Number(p.commission||0)}% • ${formatPhoneBR(p.whatsapp)}</span>
+        <span>${formatPhoneBR(p.whatsapp)}</span>
       </button>
     `).join("")}
   `;
@@ -2187,6 +2157,18 @@ async function copyClientLink(){
   }
 }
 async function saveSettings(){
+  if(currentUser?.role==="professional"){
+    showToast("Profissional colaborador não pode alterar configurações.","err");
+    return;
+  }
+
+  const isSavingGeneralAdmin=document.getElementById("ownerGeneralAdmin")&&!$("ownerGeneralAdmin").classList.contains("hidden");
+
+  if(isSavingGeneralAdmin&&currentUser?.role!=="support"){
+    showToast("Administração Geral está bloqueada para o dono por enquanto.","err");
+    return;
+  }
+
   settings.businessName=$("businessName").value.trim()||"Barber Pro Demo";
   settings.ownerWhatsapp=cleanPhone($("ownerWhatsapp").value);
   settings.businessAddress=$("businessAddress").value.trim();
@@ -2208,19 +2190,22 @@ async function saveSettings(){
     active:Boolean($(`serviceActive_${s.id}`)?.checked)
   }));
 
-  const defaultId=document.querySelector('input[name="defaultProfessional"]:checked')?.value||settings.professionals[0]?.id;
+  if(currentUser?.role==="support"){
+    const defaultId=document.querySelector('input[name="defaultProfessional"]:checked')?.value||settings.professionals[0]?.id;
 
-  settings.professionals=settings.professionals.map(p=>({
-    id:p.id,
-    name:($(`proName_${p.id}`)?.value||p.name).trim(),
-    whatsapp:cleanPhone($(`proWhatsapp_${p.id}`)?.value||p.whatsapp),
-    login:($(`proLogin_${p.id}`)?.value||p.login).trim(),
-    password:($(`proPassword_${p.id}`)?.value||p.password||"1234").trim(),
-    commission:Number($(`proCommission_${p.id}`)?.value||p.commission||0),
-    services:Array.from(document.querySelectorAll(`.proService_${p.id}:checked`)).map(c=>c.value),
-    active:Boolean($(`proActive_${p.id}`)?.checked),
-    isDefault:p.id===defaultId
-  }));
+    settings.professionals=settings.professionals.map(p=>({
+      id:p.id,
+      name:($(`proName_${p.id}`)?.value||p.name).trim(),
+      whatsapp:cleanPhone($(`proWhatsapp_${p.id}`)?.value||p.whatsapp),
+      login:($(`proLogin_${p.id}`)?.value||p.login).trim(),
+      password:($(`proPassword_${p.id}`)?.value||p.password||"1234").trim(),
+      commission:Number($(`proCommission_${p.id}`)?.value||p.commission||0),
+      commissionMode:($(`proCommissionMode_${p.id}`)?.value||p.commissionMode||"shop_pays_barber"),
+      services:Array.from(document.querySelectorAll(`.proService_${p.id}:checked`)).map(c=>c.value),
+      active:Boolean($(`proActive_${p.id}`)?.checked),
+      isDefault:p.id===defaultId
+    }));
+  }
 
   if(settings.workdays.length===0){
     showMessage("settingsMsg","Selecione pelo menos um dia de trabalho.","err");
@@ -2588,7 +2573,6 @@ async function renderClientDates(){
 
   selectedDate="";
   selectedSlot="";
-  selectedAssignedProfessionalId="";
   slotsBox.innerHTML="";
 
   const [year,month]=selectedMonth.split("-").map(Number);
@@ -2623,7 +2607,6 @@ async function renderClientDates(){
 async function selectClientDate(dateStr){
   selectedDate=dateStr;
   selectedSlot="";
-  selectedAssignedProfessionalId="";
 
   document.querySelectorAll("#dateList .date-btn").forEach(btn=>btn.classList.remove("active"));
   event.currentTarget.classList.add("active");
@@ -2641,16 +2624,15 @@ async function selectClientDate(dateStr){
       <button 
         class="slot ${busy?"busy":""}" 
         ${busy?"disabled":""} 
-        onclick="selectClientSlot('${t}','${pro?pro.id:""}')"
+        onclick="selectClientSlot('${t}')"
       >
         ${label}
       </button>
     `;
   }).join("");
 }
-function selectClientSlot(time,assignedProId){
+function selectClientSlot(time){
   selectedSlot=time;
-  selectedAssignedProfessionalId=assignedProId;
 
   document.querySelectorAll("#slotList .slot").forEach(btn=>btn.classList.remove("active"));
   event.currentTarget.classList.add("active");
@@ -2689,6 +2671,7 @@ async function bookAppointment(){
       professionalId:pro.id,
       professionalName:pro.name,
       commissionPercent:Number(pro.commission||0),
+      commissionMode:pro.commissionMode||"shop_pays_barber",
       date:selectedDate,
       time:selectedSlot,
       status:"pending",
@@ -2701,7 +2684,6 @@ async function bookAppointment(){
     showMessage("clientMsg","Agendamento enviado! Aguarde confirmação do barbeiro.","ok",7000);
     selectedDate="";
     selectedSlot="";
-    selectedAssignedProfessionalId="";
     await renderClientDates();
     await loadAppointments();
   }catch(e){
@@ -2768,7 +2750,6 @@ function selectQuickSlot(date,time,proId){
   $("quickConfirmText").innerHTML=`
     Serviço: <strong>${service.name}</strong><br>
     Profissional: <strong>${pro.name}</strong><br>
-    Comissão do profissional: <strong>${pro.commission}%</strong><br>
     Valor: <strong>${formatCurrency(service.price)}</strong><br>
     Data: <strong>${formatDateBR(date)}</strong><br>
     Horário: <strong>${time}</strong>
@@ -2821,6 +2802,7 @@ async function confirmQuickBooking(){
       professionalId:pro.id,
       professionalName:pro.name,
       commissionPercent:Number(pro.commission||0),
+      commissionMode:pro.commissionMode||"shop_pays_barber",
       date:quickSelected.date,
       time:quickSelected.time,
       status:"pending",
@@ -2921,7 +2903,7 @@ function ownerLogin(){
   const pass=$("ownerPassword").value.trim();
 
   if(email===(settings.adminEmail||"demo@barberpro.com")&&pass===(settings.adminPassword||"1234")){
-    currentUser={role:"admin",name:"Administrador geral",professionalId:null};
+    currentUser={role:"admin",name:"Dono da barbearia",professionalId:null};
   }else if(email===(settings.supportEmail||"suporte@isiquel.com")&&pass===(settings.supportPassword||"2026")){
     currentUser={role:"support",name:"Suporte Isiquel",professionalId:null};
   }else{
@@ -2938,7 +2920,7 @@ function ownerLogin(){
     if(currentUser.role==="professional"){
       openOwnerTab("mySchedule");
     }else{
-      openOwnerTab("appointments");
+      openOwnerTab("schedule");
     }
     loadAppointments();
     loadClients();
@@ -2959,17 +2941,17 @@ function configurePanelByRole(){
   if(!currentUser)return;
 
   $("panelTitle").textContent=currentUser.role==="professional" ? `Painel do profissional — ${currentUser.name}` : `Painel — ${currentUser.name}`;
-  $("panelSubtitle").textContent=currentUser.role==="professional" ? "Você visualiza somente sua própria agenda." : "Você visualiza agenda geral, financeiro e comissões.";
+  $("panelSubtitle").textContent=currentUser.role==="professional" ? "Você visualiza somente sua própria agenda." : "Painel administrativo da barbearia.";
 
-  const adminOnly=["tabSchedule","tabClients","tabFinance","tabAppointments"];
-  const proOnly=["tabMySchedule"];
+  const normalTabs=["tabSchedule","tabAppointments","tabClients","tabFinance","tabGeneralAdmin"];
+  const proTab=$("tabMySchedule");
 
   if(currentUser.role==="professional"){
-    adminOnly.forEach(id=>$(id)?.classList.add("hidden"));
-    proOnly.forEach(id=>$(id)?.classList.remove("hidden"));
+    normalTabs.forEach(id=>$(id)?.classList.add("hidden"));
+    proTab?.classList.remove("hidden");
   }else{
-    adminOnly.forEach(id=>$(id)?.classList.remove("hidden"));
-    proOnly.forEach(id=>$(id)?.classList.remove("hidden"));
+    normalTabs.forEach(id=>$(id)?.classList.remove("hidden"));
+    proTab?.classList.add("hidden");
   }
 }
 function adminLogout(){
@@ -2978,11 +2960,18 @@ function adminLogout(){
   showClientHome();
 }
 function openOwnerTab(tab){
-  ["ownerSchedule","ownerAppointments","ownerClients","ownerFinance","ownerMySchedule"].forEach(id=>$(id).classList.add("hidden"));
-  ["tabSchedule","tabAppointments","tabClients","tabFinance","tabMySchedule"].forEach(id=>$(id)?.classList.remove("active"));
+  ["ownerSchedule","ownerAppointments","ownerClients","ownerFinance","ownerMySchedule","ownerGeneralAdmin"].forEach(id=>$(id).classList.add("hidden"));
+  ["tabSchedule","tabAppointments","tabClients","tabFinance","tabMySchedule","tabGeneralAdmin"].forEach(id=>$(id)?.classList.remove("active"));
 
   if(currentUser?.role==="professional"&&tab!=="mySchedule"){
     tab="mySchedule";
+  }
+
+  if(tab==="generalAdmin"&&currentUser?.role!=="support"){
+    showToast("Administração Geral está bloqueada. Apenas o Suporte Isiquel consegue acessar por enquanto.","err",6000);
+    $("ownerSchedule").classList.remove("hidden");
+    $("tabSchedule").classList.add("active");
+    return;
   }
 
   if(tab==="schedule"){
@@ -3013,6 +3002,13 @@ function openOwnerTab(tab){
     $("tabMySchedule").classList.add("active");
     renderMyProfessionalSchedule();
   }
+
+  if(tab==="generalAdmin"){
+    $("ownerGeneralAdmin").classList.remove("hidden");
+    $("tabGeneralAdmin").classList.add("active");
+    renderProfessionalsAdminList();
+    renderFinance();
+  }
 }
 async function loadAppointments(){
   try{
@@ -3029,11 +3025,11 @@ async function loadAppointments(){
   }
 }
 function appointmentCardHtml(a,allowActions=true){
-  const pro=getProfessionalById(appointmentProId(a));
   const value=appointmentValue(a);
-  const commissionPercent=commissionPercentForAppointment(a);
-  const commissionValue=value*(commissionPercent/100);
-  const shopValue=value-commissionValue;
+  const pro=getProfessionalById(appointmentProId(a));
+  const profAmount=professionalAmountForAppointment(a);
+  const shopAmount=shopAmountForAppointment(a);
+  const label=commissionLabel(a);
 
   return`
     <div class="appointment">
@@ -3044,8 +3040,9 @@ function appointmentCardHtml(a,allowActions=true){
         <span>📲 ${formatPhoneBR(a.clientPhone||"")}</span>
         <span>⏱️ ${a.duration||settings.slotDuration} min</span>
         <span class="money-chip">Total: ${formatCurrency(value)}</span>
-        <span class="money-chip">Comissão ${pro.name}: ${commissionPercent}% = ${formatCurrency(commissionValue)}</span>
-        <span class="money-chip">Barbearia: ${formatCurrency(shopValue)}</span>
+        <span class="money-chip">${label}: ${commissionPercentForAppointment(a)}%</span>
+        <span class="money-chip">${pro.name}: ${formatCurrency(profAmount)}</span>
+        <span class="money-chip">Barbearia: ${formatCurrency(shopAmount)}</span>
         ${statusBadge(a.status)}
       </div>
       ${allowActions?`
@@ -3054,7 +3051,7 @@ function appointmentCardHtml(a,allowActions=true){
         <button class="primary" onclick="updateAppointmentStatus('${a.id}','finished')">Finalizar</button>
         <button class="danger" onclick="updateAppointmentStatus('${a.id}','canceled_by_admin')">Cancelar</button>
         <button class="secondary" onclick="openClientWhatsapp('${a.clientPhone||""}','${a.clientName||""}')">WhatsApp</button>
-        ${currentUser?.role==="admin"||currentUser?.role==="support"?`<button class="danger" onclick="deleteAppointmentItem('${a.id}')">Excluir</button>`:""}
+        ${currentUser?.role==="support"?`<button class="danger" onclick="deleteAppointmentItem('${a.id}')">Excluir</button>`:""}
       </div>`:""}
     </div>
   `;
@@ -3107,14 +3104,17 @@ async function updateAppointmentStatus(id,status){
     const pro=a?getProfessionalById(appointmentProId(a)):defaultProfessional();
     const value=a?appointmentValue(a):0;
     const percent=Number(a?.commissionPercent ?? pro.commission ?? 0);
+    const mode=a?.commissionMode||pro.commissionMode||"shop_pays_barber";
+    const temp={...a,price:value,commissionPercent:percent,commissionMode:mode,professionalId:pro.id};
 
     await updateDoc(doc(db,"barberProDemoAppointments",id),{
       status,
       professionalId:a?.professionalId||pro.id,
       professionalName:a?.professionalName||pro.name,
       commissionPercent:percent,
-      commissionAmount:value*(percent/100),
-      barbershopAmount:value-(value*(percent/100)),
+      commissionMode:mode,
+      professionalAmount:professionalAmountForAppointment(temp),
+      shopAmount:shopAmountForAppointment(temp),
       updatedAt:serverTimestamp()
     });
 
@@ -3126,6 +3126,11 @@ async function updateAppointmentStatus(id,status){
   }
 }
 async function deleteAppointmentItem(id){
+  if(currentUser?.role!=="support"){
+    showToast("Excluir agendamento está liberado apenas para suporte na demo.","err");
+    return;
+  }
+
   const ok=await askConfirm({
     title:"Excluir agendamento",
     text:"Esta ação exclui apenas este agendamento. Deseja continuar?",
@@ -3198,13 +3203,18 @@ function renderClientsList(){
         </div>
         <div class="appointment-actions">
           <button class="success" onclick="openClientWhatsapp('${c.phone||""}','${c.name||""}')">WhatsApp</button>
-          <button class="danger" onclick="deleteClientItem('${c.id}')">Excluir</button>
+          ${currentUser?.role==="support"?`<button class="danger" onclick="deleteClientItem('${c.id}')">Excluir</button>`:""}
         </div>
       </div>
     `;
   }).join("");
 }
 async function deleteClientItem(id){
+  if(currentUser?.role!=="support"){
+    showToast("Excluir cliente está liberado apenas para suporte na demo.","err");
+    return;
+  }
+
   const ok=await askConfirm({
     title:"Excluir cliente",
     text:"Deseja realmente excluir este cliente da lista? Isso não apaga agendamentos.",
@@ -3251,38 +3261,41 @@ function renderFinance(){
   const todayRevenue=valid.filter(a=>a.date===today).reduce((sum,a)=>sum+appointmentValue(a),0);
   const monthRevenue=valid.filter(a=>a.date?.slice(0,7)===month).reduce((sum,a)=>sum+appointmentValue(a),0);
   const totalRevenue=valid.reduce((sum,a)=>sum+appointmentValue(a),0);
-  const totalCommission=valid.reduce((sum,a)=>sum+commissionAmountForAppointment(a),0);
-  const shopRevenue=totalRevenue-totalCommission;
+  const shopRevenue=valid.reduce((sum,a)=>sum+shopAmountForAppointment(a),0);
+  const professionalRevenue=valid.reduce((sum,a)=>sum+professionalAmountForAppointment(a),0);
 
   $("financeGrid").innerHTML=`
     <div class="finance-card"><span>Hoje</span><strong>${formatCurrency(todayRevenue)}</strong></div>
     <div class="finance-card"><span>Mês atual</span><strong>${formatCurrency(monthRevenue)}</strong></div>
-    <div class="finance-card"><span>Comissões</span><strong>${formatCurrency(totalCommission)}</strong></div>
     <div class="finance-card"><span>Barbearia</span><strong>${formatCurrency(shopRevenue)}</strong></div>
+    <div class="finance-card"><span>Profissionais</span><strong>${formatCurrency(professionalRevenue)}</strong></div>
   `;
 
   const byPro={};
 
   allProfessionals().forEach(p=>{
-    byPro[p.id]={name:p.name,total:0,commission:0,shop:0,count:0};
+    byPro[p.id]={name:p.name,total:0,pro:0,shop:0,count:0};
   });
 
   valid.forEach(a=>{
     const id=appointmentProId(a);
     const pro=getProfessionalById(id);
-    if(!byPro[id])byPro[id]={name:pro.name,total:0,commission:0,shop:0,count:0};
+    if(!byPro[id])byPro[id]={name:pro.name,total:0,pro:0,shop:0,count:0};
     byPro[id].total+=appointmentValue(a);
-    byPro[id].commission+=commissionAmountForAppointment(a);
-    byPro[id].shop+=barbershopAmountForAppointment(a);
+    byPro[id].pro+=professionalAmountForAppointment(a);
+    byPro[id].shop+=shopAmountForAppointment(a);
     byPro[id].count++;
   });
 
-  $("financeByProfessional").innerHTML=Object.values(byPro).map(p=>`
+  const byProHtml=Object.values(byPro).map(p=>`
     <div class="finance-row">
       <span>${p.name} — ${p.count} serviço(s) — Total ${formatCurrency(p.total)}</span>
-      <b>Comissão ${formatCurrency(p.commission)} | Barbearia ${formatCurrency(p.shop)}</b>
+      <b>Profissional ${formatCurrency(p.pro)} | Barbearia ${formatCurrency(p.shop)}</b>
     </div>
   `).join("");
+
+  $("financeByProfessional").innerHTML=byProHtml;
+  if($("generalAdminFinance"))$("generalAdminFinance").innerHTML=byProHtml;
 
   const byService={};
 
@@ -3314,7 +3327,7 @@ function renderFinance(){
   $("financeMovements").innerHTML=movements.map(a=>`
     <div class="finance-row">
       <span>${formatDateBR(a.date)} ${a.time} — ${a.clientName} — ${a.serviceName} — ${appointmentProName(a)}</span>
-      <b>${formatCurrency(appointmentValue(a))} | Comissão ${formatCurrency(commissionAmountForAppointment(a))}</b>
+      <b>${formatCurrency(appointmentValue(a))}</b>
     </div>
   `).join("");
 }
@@ -3370,6 +3383,11 @@ async function seedDemoDataSafe(skipConfirm=true){
   if(!firebaseReady)return;
 
   if(skipConfirm){
+    if(currentUser?.role!=="support"){
+      showToast("Dados fictícios só podem ser adicionados pelo Suporte Isiquel.","err");
+      return;
+    }
+
     const ok=await askConfirm({
       title:"Adicionar dados fictícios",
       text:"Isso adiciona dados fictícios sem apagar clientes e sem limpar agendamentos. Continuar?",
@@ -3398,17 +3416,18 @@ async function seedDemoDataSafe(skipConfirm=true){
   const joao=getProfessionalById("joao");
 
   const demoApps=[
-    {clientName:"João Silva",clientPhone:"11988881111",serviceId:"corte",serviceName:"Corte",servicePrice:35,price:35,duration:30,professionalId:wagner.id,professionalName:wagner.name,commissionPercent:wagner.commission,date:todayYMD(),time:"09:00",status:"confirmed",source:"demo"},
-    {clientName:"Carlos Eduardo",clientPhone:"11977772222",serviceId:"corte_barba",serviceName:"Corte + Barba",servicePrice:55,price:55,duration:60,professionalId:joao.id,professionalName:joao.name,commissionPercent:joao.commission,date:todayYMD(),time:"10:30",status:"finished",source:"demo"},
-    {clientName:"Mateus Oliveira",clientPhone:"11966663333",serviceId:"barba",serviceName:"Barba",servicePrice:25,price:25,duration:30,professionalId:wagner.id,professionalName:wagner.name,commissionPercent:wagner.commission,date:addDays(1),time:"14:00",status:"pending",source:"demo"},
-    {clientName:"Rafael Santos",clientPhone:"11955554444",serviceId:"completo",serviceName:"Serviço Completo",servicePrice:75,price:75,duration:75,professionalId:wagner.id,professionalName:wagner.name,commissionPercent:wagner.commission,date:addDays(2),time:"15:00",status:"confirmed",source:"demo"}
+    {clientName:"João Silva",clientPhone:"11988881111",serviceId:"corte",serviceName:"Corte",servicePrice:35,price:35,duration:30,professionalId:wagner.id,professionalName:wagner.name,commissionPercent:wagner.commission,commissionMode:wagner.commissionMode,date:todayYMD(),time:"09:00",status:"confirmed",source:"demo"},
+    {clientName:"Carlos Eduardo",clientPhone:"11977772222",serviceId:"corte_barba",serviceName:"Corte + Barba",servicePrice:55,price:55,duration:60,professionalId:joao.id,professionalName:joao.name,commissionPercent:joao.commission,commissionMode:joao.commissionMode,date:todayYMD(),time:"10:30",status:"finished",source:"demo"},
+    {clientName:"Mateus Oliveira",clientPhone:"11966663333",serviceId:"barba",serviceName:"Barba",servicePrice:25,price:25,duration:30,professionalId:wagner.id,professionalName:wagner.name,commissionPercent:wagner.commission,commissionMode:wagner.commissionMode,date:addDays(1),time:"14:00",status:"pending",source:"demo"},
+    {clientName:"Rafael Santos",clientPhone:"11955554444",serviceId:"completo",serviceName:"Serviço Completo",servicePrice:75,price:75,duration:75,professionalId:wagner.id,professionalName:wagner.name,commissionPercent:wagner.commission,commissionMode:wagner.commissionMode,date:addDays(2),time:"15:00",status:"confirmed",source:"demo"}
   ];
 
   for(const a of demoApps){
+    const temp={...a};
     await addDoc(collection(db,"barberProDemoAppointments"),{
       ...a,
-      commissionAmount:a.price*(a.commissionPercent/100),
-      barbershopAmount:a.price-(a.price*(a.commissionPercent/100)),
+      professionalAmount:professionalAmountForAppointment(temp),
+      shopAmount:shopAmountForAppointment(temp),
       createdAt:serverTimestamp()
     });
   }
@@ -3483,7 +3502,7 @@ async function init(){
     if(currentUser.role==="professional"){
       openOwnerTab("mySchedule");
     }else{
-      openOwnerTab("appointments");
+      openOwnerTab("schedule");
     }
   }else{
     showOnly("clientHomeView");
