@@ -1180,7 +1180,7 @@ details.admin-section[open] summary:after{content:"−"}
       <div style="display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;margin-bottom:14px">
         <div>
           <h2>Financeiro</h2>
-          <span class="status finished">Faturamento e comissões</span>
+          <span class="status finished">Faturamento, comissões e pagamentos</span>
         </div>
         <button class="secondary" onclick="renderFinance()">Atualizar</button>
       </div>
@@ -1192,6 +1192,9 @@ details.admin-section[open] summary:after{content:"−"}
 
       <h3>Faturamento por serviço</h3>
       <div id="financeByService"></div>
+
+      <h3>Formas de pagamento</h3>
+      <div id="financeByPayment"></div>
 
       <h3>Movimentações</h3>
       <div id="financeMovements"></div>
@@ -1261,6 +1264,32 @@ details.admin-section[open] summary:after{content:"−"}
       <button value="confirm" type="submit" class="danger" id="appModalConfirmBtn">Confirmar</button>
     </div>
   </form>
+</dialog>
+
+<dialog id="finishPaymentModal" class="app-modal">
+  <div class="app-modal-card">
+    <div class="app-modal-icon">💳</div>
+    <h3>Finalizar serviço</h3>
+    <p>Escolha como o cliente pagou este serviço.</p>
+
+    <input id="finishPaymentAppointmentId" type="hidden">
+
+    <div class="single" style="margin-top:15px">
+      <label>Forma de pagamento</label>
+      <select id="finishPaymentMethod">
+        <option value="pix">Pix</option>
+        <option value="dinheiro">Dinheiro</option>
+        <option value="debito">Cartão de débito</option>
+        <option value="credito">Cartão de crédito</option>
+        <option value="outro">Outro</option>
+      </select>
+    </div>
+
+    <div class="app-modal-actions">
+      <button type="button" class="secondary" onclick="closeFinishPaymentModal()">Cancelar</button>
+      <button type="button" class="primary" onclick="confirmFinishPayment()">Finalizar</button>
+    </div>
+  </div>
 </dialog>
 
 <script type="module">
@@ -1638,6 +1667,16 @@ function shopAmountForAppointment(a){
 function commissionLabel(a){
   const mode=commissionModeForAppointment(a);
   return mode==="barber_pays_shop"?"Barbeiro paga à barbearia":"Barbearia paga ao barbeiro";
+}
+function paymentMethodLabel(method){
+  const labels={
+    pix:"Pix",
+    dinheiro:"Dinheiro",
+    debito:"Cartão de débito",
+    credito:"Cartão de crédito",
+    outro:"Outro"
+  };
+  return labels[method]||"Não informado";
 }
 function makeWhatsAppUrl(phone,message=""){
   const phoneClean=cleanPhone(phone);
@@ -2605,6 +2644,8 @@ async function bookAppointment(){
       date:selectedDate,
       time:selectedSlot,
       status:"pending",
+      paymentMethod:"",
+      paymentMethodLabel:"",
       source:"cliente",
       createdAt:serverTimestamp()
     });
@@ -2736,6 +2777,8 @@ async function confirmQuickBooking(){
       date:quickSelected.date,
       time:quickSelected.time,
       status:"pending",
+      paymentMethod:"",
+      paymentMethodLabel:"",
       source:"horarios_disponiveis",
       createdAt:serverTimestamp()
     });
@@ -2784,6 +2827,7 @@ async function loadMyAppointments(){
           <span>📅 ${formatDateBR(a.date)} às ${a.time}</span>
           <span>📲 ${formatPhoneBR(a.clientPhone)}</span>
           <span class="money-chip">${formatCurrency(appointmentValue(a))}</span>
+          ${a.paymentMethodLabel?`<span class="money-chip">Pagamento: ${a.paymentMethodLabel}</span>`:""}
           ${statusBadge(a.status)}
         </div>
         <div class="appointment-actions">
@@ -2825,6 +2869,58 @@ function statusBadge(status){
   if(status==="canceled_by_client")return`<span class="status canceled">Cancelado pelo cliente</span>`;
   if(status==="canceled_by_admin")return`<span class="status canceled">Cancelado pelo admin</span>`;
   return`<span class="status pending">Pendente</span>`;
+}
+function openFinishPayment(id){
+  const modal=$("finishPaymentModal");
+  $("finishPaymentAppointmentId").value=id;
+  $("finishPaymentMethod").value="pix";
+
+  if(modal&&!modal.open){
+    modal.showModal();
+  }
+}
+function closeFinishPaymentModal(){
+  const modal=$("finishPaymentModal");
+  if(modal&&modal.open)modal.close();
+}
+async function confirmFinishPayment(){
+  const id=$("finishPaymentAppointmentId").value;
+  const method=$("finishPaymentMethod").value;
+
+  if(!id){
+    showToast("Agendamento não encontrado.","err");
+    return;
+  }
+
+  try{
+    const a=appointmentsCache.find(x=>x.id===id);
+    const pro=a?getProfessionalById(appointmentProId(a)):defaultProfessional();
+    const value=a?appointmentValue(a):0;
+    const percent=Number(a?.commissionPercent ?? pro.commission ?? 0);
+    const mode=a?.commissionMode||pro.commissionMode||"shop_pays_barber";
+    const temp={...a,price:value,commissionPercent:percent,commissionMode:mode,professionalId:pro.id};
+
+    await updateDoc(doc(db,"barberProDemoAppointments",id),{
+      status:"finished",
+      paymentMethod:method,
+      paymentMethodLabel:paymentMethodLabel(method),
+      professionalId:a?.professionalId||pro.id,
+      professionalName:a?.professionalName||pro.name,
+      commissionPercent:percent,
+      commissionMode:mode,
+      professionalAmount:professionalAmountForAppointment(temp),
+      shopAmount:shopAmountForAppointment(temp),
+      finishedAt:serverTimestamp(),
+      updatedAt:serverTimestamp()
+    });
+
+    closeFinishPaymentModal();
+    showToast("Serviço finalizado com pagamento em "+paymentMethodLabel(method)+".","ok");
+    await loadAppointments();
+  }catch(e){
+    console.error(e);
+    showToast("Erro ao finalizar serviço.","err");
+  }
 }
 function ownerLogin(){
   startAudioContext();
@@ -2980,12 +3076,13 @@ function appointmentCardHtml(a,allowActions=true){
         <span class="money-chip">${label}: ${commissionPercentForAppointment(a)}%</span>
         <span class="money-chip">${pro.name}: ${formatCurrency(profAmount)}</span>
         <span class="money-chip">Barbearia: ${formatCurrency(shopAmount)}</span>
+        ${a.paymentMethodLabel?`<span class="money-chip">Pagamento: ${a.paymentMethodLabel}</span>`:""}
         ${statusBadge(a.status)}
       </div>
       ${allowActions?`
       <div class="appointment-actions">
         <button class="success" onclick="updateAppointmentStatus('${a.id}','confirmed')">Confirmar</button>
-        <button class="primary" onclick="updateAppointmentStatus('${a.id}','finished')">Finalizar</button>
+        <button class="primary" onclick="openFinishPayment('${a.id}')">Finalizar</button>
         <button class="danger" onclick="updateAppointmentStatus('${a.id}','canceled_by_admin')">Cancelar</button>
         <button class="secondary" onclick="openClientWhatsapp('${a.clientPhone||""}','${a.clientName||""}')">WhatsApp</button>
         ${currentUser?.role==="support"?`<button class="danger" onclick="deleteAppointmentItem('${a.id}')">Excluir</button>`:""}
@@ -3253,6 +3350,25 @@ function renderFinance(){
     </div>
   `).join("");
 
+  const byPayment={};
+
+  valid.forEach(a=>{
+    const key=a.paymentMethod||"nao_informado";
+    const label=a.paymentMethodLabel||"Não informado";
+    if(!byPayment[key])byPayment[key]={label,total:0,count:0};
+    byPayment[key].total+=appointmentValue(a);
+    byPayment[key].count++;
+  });
+
+  $("financeByPayment").innerHTML=Object.values(byPayment).length
+    ? Object.values(byPayment).map(p=>`
+      <div class="finance-row">
+        <span>${p.label} — ${p.count} pagamento(s)</span>
+        <b>${formatCurrency(p.total)}</b>
+      </div>
+    `).join("")
+    : `<div class="empty">Nenhuma forma de pagamento registrada ainda.</div>`;
+
   const movements=[...valid].sort((a,b)=>`${b.date||""} ${b.time||""}`.localeCompare(`${a.date||""} ${a.time||""}`)).slice(0,30);
 
   if(movements.length===0){
@@ -3262,7 +3378,7 @@ function renderFinance(){
 
   $("financeMovements").innerHTML=movements.map(a=>`
     <div class="finance-row">
-      <span>${formatDateBR(a.date)} ${a.time} — ${a.clientName} — ${a.serviceName} — ${appointmentProName(a)}</span>
+      <span>${formatDateBR(a.date)} ${a.time} — ${a.clientName} — ${a.serviceName} — ${appointmentProName(a)} — ${a.paymentMethodLabel||"Pagamento não informado"}</span>
       <b>${formatCurrency(appointmentValue(a))}</b>
     </div>
   `).join("");
@@ -3352,10 +3468,10 @@ async function seedDemoDataSafe(skipConfirm=true){
   const joao=getProfessionalById("joao");
 
   const demoApps=[
-    {clientName:"João Silva",clientPhone:"11988881111",serviceId:"corte",serviceName:"Corte",servicePrice:35,price:35,duration:30,professionalId:wagner.id,professionalName:wagner.name,commissionPercent:wagner.commission,commissionMode:wagner.commissionMode,date:todayYMD(),time:"09:00",status:"confirmed",source:"demo"},
-    {clientName:"Carlos Eduardo",clientPhone:"11977772222",serviceId:"corte_barba",serviceName:"Corte + Barba",servicePrice:55,price:55,duration:60,professionalId:joao.id,professionalName:joao.name,commissionPercent:joao.commission,commissionMode:joao.commissionMode,date:todayYMD(),time:"10:30",status:"finished",source:"demo"},
-    {clientName:"Mateus Oliveira",clientPhone:"11966663333",serviceId:"barba",serviceName:"Barba",servicePrice:25,price:25,duration:30,professionalId:wagner.id,professionalName:wagner.name,commissionPercent:wagner.commission,commissionMode:wagner.commissionMode,date:addDays(1),time:"14:00",status:"pending",source:"demo"},
-    {clientName:"Rafael Santos",clientPhone:"11955554444",serviceId:"completo",serviceName:"Serviço Completo",servicePrice:75,price:75,duration:75,professionalId:wagner.id,professionalName:wagner.name,commissionPercent:wagner.commission,commissionMode:wagner.commissionMode,date:addDays(2),time:"15:00",status:"confirmed",source:"demo"}
+    {clientName:"João Silva",clientPhone:"11988881111",serviceId:"corte",serviceName:"Corte",servicePrice:35,price:35,duration:30,professionalId:wagner.id,professionalName:wagner.name,commissionPercent:wagner.commission,commissionMode:wagner.commissionMode,date:todayYMD(),time:"09:00",status:"confirmed",paymentMethod:"pix",paymentMethodLabel:"Pix",source:"demo"},
+    {clientName:"Carlos Eduardo",clientPhone:"11977772222",serviceId:"corte_barba",serviceName:"Corte + Barba",servicePrice:55,price:55,duration:60,professionalId:joao.id,professionalName:joao.name,commissionPercent:joao.commission,commissionMode:joao.commissionMode,date:todayYMD(),time:"10:30",status:"finished",paymentMethod:"debito",paymentMethodLabel:"Cartão de débito",source:"demo"},
+    {clientName:"Mateus Oliveira",clientPhone:"11966663333",serviceId:"barba",serviceName:"Barba",servicePrice:25,price:25,duration:30,professionalId:wagner.id,professionalName:wagner.name,commissionPercent:wagner.commission,commissionMode:wagner.commissionMode,date:addDays(1),time:"14:00",status:"pending",paymentMethod:"",paymentMethodLabel:"",source:"demo"},
+    {clientName:"Rafael Santos",clientPhone:"11955554444",serviceId:"completo",serviceName:"Serviço Completo",servicePrice:75,price:75,duration:75,professionalId:wagner.id,professionalName:wagner.name,commissionPercent:wagner.commission,commissionMode:wagner.commissionMode,date:addDays(2),time:"15:00",status:"confirmed",paymentMethod:"credito",paymentMethodLabel:"Cartão de crédito",source:"demo"}
   ];
 
   for(const a of demoApps){
@@ -3417,6 +3533,9 @@ window.openClientWhatsapp=openClientWhatsapp;
 window.renderFinance=renderFinance;
 window.seedDemoDataSafe=seedDemoDataSafe;
 window.addProfessionalForm=addProfessionalForm;
+window.openFinishPayment=openFinishPayment;
+window.closeFinishPaymentModal=closeFinishPaymentModal;
+window.confirmFinishPayment=confirmFinishPayment;
 
 async function init(){
   currentClient=loadClientFromStorage();
